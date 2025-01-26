@@ -18,7 +18,7 @@ def save_as_pdf(doc_path: str, output_dir: str):
 
 def create_report_template():
     # Ensure templates directory exists
-    templates_dir = os.path.join("..", "templates")
+    templates_dir = os.path.join(".", "templates")
     if not os.path.exists(templates_dir):
         os.makedirs(templates_dir)
 
@@ -94,13 +94,7 @@ def insert_content(
 
     doc_path = "report_final.docx"
     output_dir = os.getcwd()
-    save_as_pdf(doc_path, output_dir)
+    pdf_path = save_as_pdf(doc_path, output_dir)
 
     os.remove("report_final.docx")
-
-    #TODO need to delete the .docx file
-
-
-if __name__ == "__main__":
-    # Create the template
-    create_report_template()
+    os.startfile(pdf_path)

@@ -16,16 +16,6 @@ def prepare_data(data: pd.DataFrame) -> pd.DataFrame:
         data["Datum_parsed"] - data["Datum_parsed"].shift(1)
     ).dt.days / 7
 
-    # Calculate Yield per week
-    # data["Ertrag (€)"] = (
-    #     data["Gesamtverkäufe (€)"]
-    #     - data["Rückgaben (€)"]
-    #     - data["Beschädigte Ware (€)"]
-    # )
-
-    # Calculate Profit per week
-    # data["Gewinn (€)"] = data["Ertrag (€)"] - data["Kosten (€)"]
-
     # Calculate Percentage Changes from previous week
     data["Ertrag_Prozent_Änderung"] = round(data["Ertrag (€)"].pct_change() * 100, 2)
     data["Gewinn_Prozent_Änderung"] = round(data["Gewinn (€)"].pct_change() * 100, 2)
